@@ -15,14 +15,14 @@ const AuthLayout = ({ children }: { children: ReactNode }) => {
                         <h1 className="text-2xl font-bold text-dark-100 dark:text-light-900">
                             Join DevFlow
                         </h1>
-                        <p className='text-dark-100 dark:text-light-900'>
+                        <p className='text-dark-100 dark:text-[#979797] pb-9'>
                             To get your questions answered
                         </p>
                     </div>
                     <Image src="/images/logoDavFlow1.png"
                         alt='DevFlow logo'
-                        width={53}
-                        height={53}
+                        width={54}
+                        height={54}
                         className='object-contain'
                     />
                 </div>

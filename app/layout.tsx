@@ -29,13 +29,12 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
     <html lang="en" suppressHydrationWarning>
       <SessionProvider session={session}>
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased  `}
+          className={`${geistSans.variable} ${geistMono.variable} antialiased  bg-black`}
         >
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
-            disableTransitionOnChange
           >
             {children}
           </ThemeProvider>
