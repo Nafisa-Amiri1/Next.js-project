@@ -26,12 +26,12 @@ const MobileNavigation = () => {
                     width={36}
                     height={36}
                     alt="menu"
-                // className="sm:hidden"
+                className="sm:hidden"
                 />
             </SheetTrigger>
             <SheetContent
                 side="left"
-                className="bg-[rgb(105,125,236)] dark:bg-[#000314] border-none"
+                className="bg-[#fefefe] dark:bg-[#0d151d] border-none"
             >
                 <SheetHeader>
                     <SheetTitle className="hidden">Navigation</SheetTitle>
@@ -50,7 +50,7 @@ const MobileNavigation = () => {
                              flex-col justify-between overflow-y-auto">
                         <SheetClose asChild>
                             <section className="flex h-full flex-col gap-6 pt-16">
-                                <NavLinks />
+                                <NavLinks isMobileNav/>
                             </section>
                         </SheetClose>
                         <SheetClose asChild>

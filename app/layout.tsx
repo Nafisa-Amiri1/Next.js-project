@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+
 import { Toaster } from "@/components/ui/sonner";
 import { SessionProvider } from "next-auth/react";
-
 import { ThemeProvider } from 'next-themes';
 import { auth } from "@/auth";
 
@@ -27,21 +27,24 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
   const session = await auth();
   return (
     <html lang="en" suppressHydrationWarning>
-      <SessionProvider session={session}>
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased  bg-black`}
-        >
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-          >
+      <head>
+        <link
+          rel="stylesheet"
+          type='text/css'
+          href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+      </head>
+
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black`}>
+        <SessionProvider session={session}>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             {children}
           </ThemeProvider>
-          <Toaster /> 
-        </body>
-      </SessionProvider>
+
+          <Toaster />
+        </SessionProvider>
+      </body>
     </html>
+
   );
 };
 export default RootLayout; 

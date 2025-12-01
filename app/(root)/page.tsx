@@ -7,7 +7,7 @@ const Home = async () => {
 
   return (
     <>
-      {/* <h1 className="h1-bold">Welcome to the world of Next.js</h1> */}
+      <h1 className="font-bold text-3xl ">Welcome to the world of Next.js</h1>
       {/* <h2>Hiii</h2> */}
     </>
   );
