@@ -29,6 +29,9 @@
 }
 
 
+/* استایلtext */
+
+
 /* Scrollbar مخفی */
 
 .no-scrollbar {
@@ -51,12 +54,8 @@
     @apply bg-gray-100 text-gray-700 px-4 py-3 rounded-lg border w-full min-h-[41px] shadow-none;
 }
 
-.text-primary-gradient {
-    background: linear-gradient(90deg, #fd5401, #ff7a33);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    /* برای سازگاری */
+.btn-primary-gradient {
+    background: linear-gradient(to right, #fe7107, #f37f30, #e69254);
 }
 
 
