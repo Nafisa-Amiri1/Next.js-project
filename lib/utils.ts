@@ -1,27 +1,51 @@
-
-import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
-import { techMap } from "@/constants/techMap"
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+import { techMap } from "@/constants/techMap";
 
 /**
- * ترکیب کلاس‌ها با clsx و tailwind-merge
+ * ادغام کلاس‌ها با Tailwind
  */
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 
 /**
  * دریافت کلاس Devicon بر اساس نام تکنولوژی
- * @param techName نام تکنولوژی (مانند "JavaScript", "reactjs")
- * @returns رشته کلاس Devicon همراه با "colored" یا کلاس پیش‌فرض
  */
 export const getDeviconClassName = (techName: string) => {
-  // نرمال‌سازی نام تکنولوژی: حذف فاصله و نقطه، تبدیل به حروف کوچک
-  const normalizedTechName = techName.replace(/[ .]/g, "").toLowerCase()
-
-  // اگر تکنولوژی پیدا شد، کلاس + "colored" اضافه شود
-  // در غیر این صورت، کلاس پیش‌فرض Devicon برگردانده شود
+  const normalizedTechName = techName.replace(/[ .]/g, "").toLowerCase();
   return techMap[normalizedTechName]
     ? `${techMap[normalizedTechName]} colored`
-    : "devicon-devicon-plain"
-}
+    : "devicon-devicon-plain";
+};
+
+
+export const getTimeStamp = (date: Date | string): string => {
+  if (!date) return "just now"; 
+
+  const d = typeof date === "string" ? new Date(date) : date;
+
+  const now = new Date();
+  const secondsAgo = Math.floor((now.getTime() - d.getTime()) / 1000);
+
+  if (secondsAgo < 1) return "just now";
+
+  const units = [
+    { label: "year", seconds: 31536000 },
+    { label: "month", seconds: 2592000 },
+    { label: "week", seconds: 604800 },
+    { label: "day", seconds: 86400 },
+    { label: "hour", seconds: 3600 },
+    { label: "minute", seconds: 60 },
+    { label: "second", seconds: 1 },
+  ];
+
+  for (const unit of units) {
+    const interval = Math.floor(secondsAgo / unit.seconds);
+    if (interval >= 1) {
+      return `${interval} ${unit.label}${interval > 1 ? "s" : ""} ago`;
+    }
+  }
+
+  return "just now";
+};
